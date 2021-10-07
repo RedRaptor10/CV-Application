@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+}
+
+#container {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	height: 100vh;
+	font-family: Arial;
+}
+
+#header {
+	display: flex;
+	align-items: center;
+	background: rgb(0, 128, 255);
+	width: 100%;
+	height: 10%;
+	padding-left: 12px;
+	color: rgb(255, 255, 255);
+	user-select: none;
+}
+
+#main {
+	width: 100%;
+	height: 90%;
+}
+
+#form-container {
+	margin: 12px auto 12px auto;
+}
+
+.btn-container {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.btn {
+	width: 100px;
+	margin-right: 12px;
+	font-size: 18px;
+}
+
+#form {
+	width: 50%;
+	margin: 12px auto 12px auto;
+	padding: 12px;
+	border: 1px solid rgb(128, 128, 128);
+}
+#form form {
+	width: 100%;
+}
+#form label {
+	display: block;
+}
+#form input, #form textarea {
+	width: 50%;
+	margin-bottom: 12px;
+}
+#form textarea {
+	resize: none;
+}
+
+#cv {
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 12px;
+	border: 1px solid rgb(128, 128, 128);
+}
+#cv-header {
+	text-decoration: underline;
+	text-align: center;
+}
+#cv hr {
+	margin-top: -18px;
+}
+#cv div div div:first-child {
+	display: inline-block;
+	width: 120px;
+	font-size: 18px;
+	font-weight: bold;
+}
+#cv div div div:nth-child(2) {
+	display: inline-block;
+}
