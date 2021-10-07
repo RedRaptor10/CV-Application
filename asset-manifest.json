@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/RedRaptor10/CV-Application/static/css/main.07436bf7.chunk.css",
-    "main.js": "/RedRaptor10/CV-Application/static/js/main.3152fe73.chunk.js",
-    "main.js.map": "/RedRaptor10/CV-Application/static/js/main.3152fe73.chunk.js.map",
-    "runtime-main.js": "/RedRaptor10/CV-Application/static/js/runtime-main.bf6e7dfa.js",
-    "runtime-main.js.map": "/RedRaptor10/CV-Application/static/js/runtime-main.bf6e7dfa.js.map",
-    "static/js/2.8f66391a.chunk.js": "/RedRaptor10/CV-Application/static/js/2.8f66391a.chunk.js",
-    "static/js/2.8f66391a.chunk.js.map": "/RedRaptor10/CV-Application/static/js/2.8f66391a.chunk.js.map",
-    "index.html": "/RedRaptor10/CV-Application/index.html",
-    "static/css/main.07436bf7.chunk.css.map": "/RedRaptor10/CV-Application/static/css/main.07436bf7.chunk.css.map",
-    "static/js/2.8f66391a.chunk.js.LICENSE.txt": "/RedRaptor10/CV-Application/static/js/2.8f66391a.chunk.js.LICENSE.txt"
+    "main.css": "/CV-Application/static/css/main.07436bf7.chunk.css",
+    "main.js": "/CV-Application/static/js/main.3152fe73.chunk.js",
+    "main.js.map": "/CV-Application/static/js/main.3152fe73.chunk.js.map",
+    "runtime-main.js": "/CV-Application/static/js/runtime-main.4f02d0f7.js",
+    "runtime-main.js.map": "/CV-Application/static/js/runtime-main.4f02d0f7.js.map",
+    "static/js/2.8f66391a.chunk.js": "/CV-Application/static/js/2.8f66391a.chunk.js",
+    "static/js/2.8f66391a.chunk.js.map": "/CV-Application/static/js/2.8f66391a.chunk.js.map",
+    "index.html": "/CV-Application/index.html",
+    "static/css/main.07436bf7.chunk.css.map": "/CV-Application/static/css/main.07436bf7.chunk.css.map",
+    "static/js/2.8f66391a.chunk.js.LICENSE.txt": "/CV-Application/static/js/2.8f66391a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.bf6e7dfa.js",
+    "static/js/runtime-main.4f02d0f7.js",
     "static/js/2.8f66391a.chunk.js",
     "static/css/main.07436bf7.chunk.css",
     "static/js/main.3152fe73.chunk.js"
