@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Form = (props) => {
-	const { form, handleChange, clear, submit } = props;
+	const { form, handleChange, handleChangeExp, removeExp, addExp, clear, submit } = props;
 
 	return (
 		<div id="form">
@@ -16,15 +16,27 @@ const Form = (props) => {
 				<label>Study</label><input type="text" name="study" value={form.study} onChange={handleChange} />
 				<label>Date</label><input type="date" name="schoolDate" value={form.schoolDate} onChange={handleChange} />
 				<h3>Experience</h3>
-				<label>Company</label><input type="text" name="company" value={form.company} onChange={handleChange} />
-				<label>Position</label><input type="text" name="position" value={form.position} onChange={handleChange} />
-				<label>Tasks</label><textarea name="tasks" value={form.tasks} onChange={handleChange} />
-				<label>Date Start</label><input type="date" name="companyDateStart" value={form.companyDateStart} onChange={handleChange} />
-				<label>Date End</label><input type="date" name="companyDateEnd" value={form.companyDateEnd} onChange={handleChange} />
+				{form.experience.map((e, i) => {
+					return (
+						<div key={i}>
+							<label>Company</label><input type="text" name="company" value={e.company} onChange={(event) => handleChangeExp(event, i)} />
+							<label>Position</label><input type="text" name="position" value={e.position} onChange={(event) => handleChangeExp(event, i)} />
+							<label>Tasks</label><textarea name="tasks" value={e.tasks} onChange={(event) => handleChangeExp(event, i)} />
+							<label>Date Start</label><input type="date" name="companyDateStart" value={e.companyDateStart} onChange={(event) => handleChangeExp(event, i)} />
+							<label>Date End</label><input type="date" name="companyDateEnd" value={e.companyDateEnd} onChange={(event) => handleChangeExp(event, i)} />
+							<div class="btn-container-experience">
+								{form.experience.length > 1 ?
+									<button className="btn" type="button" onClick={(event) => removeExp(event, i)}>Remove</button>
+								: null}
+								<button className="btn" type="button" onClick={addExp}>Add</button>
+							</div>
+						</div>
+					);})
+				}
 				<br />
-				<div class="btn-container">
-					<button class="btn" type="button" onClick={clear}>Clear</button>
-					<button class="btn" type="button" onClick={submit}>Submit</button>
+				<div className="btn-container">
+					<button className="btn" type="button" onClick={clear}>Clear</button>
+					<button className="btn" type="button" onClick={submit}>Submit</button>
 				</div>
 			</form>
 		</div>

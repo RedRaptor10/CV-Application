@@ -4,7 +4,7 @@ const Education = (props) => {
 	const { school, study, schoolDate } = props;
 
 	return (
-		<div>
+		<div id="education">
 			<h2>Education</h2>
 			<hr />
 			<div><div>School:</div><div>{school}</div></div>

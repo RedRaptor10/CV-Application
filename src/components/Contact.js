@@ -4,7 +4,7 @@ const Contact = (props) => {
 	const { firstName, lastName, email, phone } = props;
 
 	return (
-		<div>
+		<div id="contact">
 			<h2>Contact Information</h2>
 			<hr />
 			<div><div>First Name:</div><div>{firstName}</div></div>
