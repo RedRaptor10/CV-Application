@@ -10,7 +10,7 @@ const Form = (props) => {
 				<label>First Name</label><input type="text" name="firstName" value={form.firstName} onChange={handleChange} />
 				<label>Last Name</label><input type="text" name="lastName" value={form.lastName} onChange={handleChange} />
 				<label>Email</label><input type="text" name="email" value={form.email} onChange={handleChange} />
-				<label>Phone</label><input type="text" name="phone" value={form.phone} onChange={handleChange} />
+				<label>Phone Number</label><input type="text" name="phone" value={form.phone} onChange={handleChange} />
 				<h3>Education</h3>
 				<label>School</label><input type="text" name="school" value={form.school} onChange={handleChange} />
 				<label>Study</label><input type="text" name="study" value={form.study} onChange={handleChange} />

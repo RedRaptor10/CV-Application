@@ -1,168 +1,137 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import Contact from './components/Contact';
 import Education from './components/Education';
 import Experience from './components/Experience';
 
-class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			showForm: false,
-			showCv: true,
-			form: {
-				firstName: '', lastName: '', email: '', phone: '',
-				school: '', study: '', schoolDate: '',
-				experience: [{ company: '', position: '', tasks: '',
+const App = () => {
+	const [showForm, setShowForm] = useState(false);
+	const [showCv, setShowCv] = useState(true);
+	const [form, setForm] = useState({
+					firstName: '', lastName: '', email: '', phone: '',
+					school: '', study: '', schoolDate: '',
+					experience: [{ company: '', position: '', tasks: '',
 					companyDateStart: '', companyDateEnd: '' }]
-			},
-			contact: {
-				firstName: '',
-				lastName: '',
-				email: '',
-				phone: ''
-			},
-			education: {
-				school: '',
-				study: '',
-				schoolDate: ''
-			},
-			experience: [{
-				company: '',
-				position: '',
-				tasks: '',
-				companyDateStart: '',
-				companyDateEnd: ''
-			}]
-		};
-		this.edit = this.edit.bind(this);
-		this.handleChange = this.handleChange.bind(this);
-		this.handleChangeExp = this.handleChangeExp.bind(this);
-		this.removeExp = this.removeExp.bind(this);
-		this.addExp = this.addExp.bind(this);
-		this.clear = this.clear.bind(this);
-		this.submit = this.submit.bind(this);
-	}
+				});
+	const [contact, setContact] = useState({
+					firstName: '',
+					lastName: '',
+					email: '',
+					phone: ''
+				});
+	const [education, setEducation] = useState({
+						school: '',
+						study: '',
+						schoolDate: ''
+					});
+	const [experience, setExperience] = useState([{
+						company: '',
+						position: '',
+						tasks: '',
+						companyDateStart: '',
+						companyDateEnd: ''
+					}]);
 
 	// On edit, show form
-	edit = () => {
-		this.setState({
-			showForm: this.state.showForm ? false : true,
-			showCv: this.state.showCv ? false : true
-		});
+	const edit = () => {
+		setShowForm(showForm ? false : true);
+		setShowCv(showCv ? false : true);
 	};
 
 	// Dynamically change state from form inputs
-	handleChange = (event) => {
-		this.setState({
-			form: {
-				...this.state.form, // Spread notation, merge all other existing properties
-				[event.target.name]: event.target.value // Square brackets used for dynamic key
-			}
+	const handleChange = (event) => {
+		setForm({
+			...form, // Spread notation, merge all other existing properties
+			[event.target.name]: event.target.value // Square brackets used for dynamic key
 		});
 	};
 
 	// Dynamically change state from form experience inputs
-	handleChangeExp = (event, i) => {
-		const temp = this.state.form.experience;
+	const handleChangeExp = (event, i) => {
+		const temp = form.experience;
 		temp[i] = {
 			...temp[i],
 			[event.target.name]: event.target.value
 		};
 
-		this.setState({
-			form: {
-				...this.state.form,
-				experience: temp
-			}
+		setForm({
+			...form,
+			experience: temp
 		});
 	};
 
 	// Remove experience
-	removeExp = (event, i) => {
-		const array1 = this.state.form.experience.slice(0, i); // Slice array from beginning to task position
-		const array2 = this.state.form.experience.slice(i + 1); // Slice array from task index + 1 to end
+	const removeExp = (event, i) => {
+		const array1 = form.experience.slice(0, i); // Slice array from beginning to task position
+		const array2 = form.experience.slice(i + 1); // Slice array from task index + 1 to end
 
-		this.setState({
-			form: {
-				...this.state.form,
-				experience: array1.concat(array2) // Merge array slices and set as new tasks array
-			}
+		setForm({
+			...form,
+			experience: array1.concat(array2) // Merge array slices and set as new tasks array
 		});
 	}
 
 	// Add experience
-	addExp = () => {
-		this.setState({
-			form: {
-				...this.state.form,
-				experience: this.state.form.experience.concat(
-					{ company: '', position: '', tasks: '',
-						companyDateStart: '', companyDateEnd: '' })
-			}
+	const addExp = () => {
+		setForm({
+			...form,
+			experience: form.experience.concat(
+				{ company: '', position: '', tasks: '',
+					companyDateStart: '', companyDateEnd: '' })
 		});
 	};
 
 	// Clear
-	clear = () => {
-		this.setState({
-			form: {
-				firstName: '', lastName: '', email: '', phone: '',
-				school: '', study: '', schoolDate: '',
-				experience: [{ company: '', position: '', tasks: '',
-					companyDateStart: '', companyDateEnd: '' }]
-			}
+	const clear = () => {
+		setForm({
+			firstName: '', lastName: '', email: '', phone: '',
+			school: '', study: '', schoolDate: '',
+			experience: [{ company: '', position: '', tasks: '',
+				companyDateStart: '', companyDateEnd: '' }]
 		});
 	};
 
 	// Submit form
-	submit = () => {
-		const form = this.state.form;
-
-		this.setState({
-			showForm: false,
-			showCv: true,
-			contact: {
-				firstName: form.firstName,
-				lastName: form.lastName,
-				email: form.email,
-				phone: form.phone
-			},
-			education: {
-				school: form.school,
-				study: form.study,
-				schoolDate: form.schoolDate
-			},
-			experience: form.experience
+	const submit = () => {
+		setShowForm(false);
+		setShowCv(true);
+		setContact({
+			firstName: form.firstName,
+			lastName: form.lastName,
+			email: form.email,
+			phone: form.phone
 		});
+		setEducation({
+			school: form.school,
+			study: form.study,
+			schoolDate: form.schoolDate
+		});
+		setExperience(form.experience);
 	};
 
-	render() {
-		const { showForm, showCv, form, experience } = this.state;
-		const { firstName, lastName, email, phone } = this.state.contact;
-		const { school, study, schoolDate } = this.state.education;
+	const { firstName, lastName, email, phone } = contact;
+	const { school, study, schoolDate } = education;
 
-		return (
-			<div id="container">
-				<Header />
-				<div id="main">
-					<div id="form-container">
-						<div className="btn-container"><button className="btn" type="button" onClick={this.edit}>Edit</button></div>
-						{showForm ? <Form form={form} handleChange={this.handleChange} handleChangeExp={this.handleChangeExp}
-							removeExp={this.removeExp} addExp={this.addExp} clear={this.clear} submit={this.submit} /> : null}
-					</div>
-					{showCv ?
-						<div id="cv">
-						<div id="cv-header"><h1>Curriculum Vitae</h1></div>
-						<Contact firstName={firstName} lastName={lastName} email={email} phone={phone} />
-						<Education school={school} study={study} schoolDate={schoolDate} />
-						<Experience experience={experience} />
-					</div> : null}
+	return (
+		<div id="container">
+			<Header />
+			<div id="main">
+				<div id="form-container">
+					<div className="btn-container"><button className="btn" type="button" onClick={edit}>Edit</button></div>
+					{showForm ? <Form form={form} handleChange={handleChange} handleChangeExp={handleChangeExp}
+						removeExp={removeExp} addExp={addExp} clear={clear} submit={submit} /> : null}
 				</div>
+				{showCv ?
+					<div id="cv">
+					<div id="cv-header"><h1>Curriculum Vitae</h1></div>
+					<Contact firstName={firstName} lastName={lastName} email={email} phone={phone} />
+					<Education school={school} study={study} schoolDate={schoolDate} />
+					<Experience experience={experience} />
+				</div> : null}
 			</div>
-		);
-	}
-}
+		</div>
+	);
+};
 
 export default App;
